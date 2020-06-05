@@ -1,15 +1,10 @@
 {
-  "name": "@nodenv/jetbrains-npm",
+  "name": "jetbrains-yarn",
   "version": "1.0.0",
-  "description": "Fix IntelliJ/WebStorm's npm integration under nodenv",
-  "homepage": "https://github.com/nodenv/jetbrains-npm",
+  "description": "Fix IntelliJ/WebStorm's yarn integration under nodenv",
+  "homepage": "https://github.com/tanmen/jetbrains-yarn",
   "license": "MIT",
-  "author": "Jason Karns <jason.karns@gmail.com> (http://jason.karns.name/)",
-  "scripts": {
-    "postversion": "npm publish",
-    "prepublishOnly": "npm run publish:github",
-    "publish:github": "git push --follow-tags"
-  },
+  "author": "tanmen",
   "keywords": [
     "nodenv",
     "jetbrains",

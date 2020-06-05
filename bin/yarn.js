@@ -24,6 +24,6 @@ child_process.exec('nodenv root', function(err, stdout, stderr) {
 })
 
 function npmShim(nodenvRoot) {
-  var npmShim = nodenvRoot + '/shims/npm'
+  var npmShim = nodenvRoot + '/shims/yarn'
   if (fs.existsSync(npmShim)) return npmShim
 }

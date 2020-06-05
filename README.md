@@ -1,6 +1,6 @@
-# jetbrains-npm proxy
+# jetbrains-yarn proxy
 
-Fix IntelliJ/WebStorm's npm integration under nodenv
+Fix IntelliJ/WebStorm's yarn integration under nodenv
 
 <!-- toc -->
 
@@ -9,7 +9,6 @@ Fix IntelliJ/WebStorm's npm integration under nodenv
   * [nodenv plugin](#nodenv-plugin)
   * [jetbrains-aware git clone](#jetbrains-aware-git-clone)
   * [standalone clone](#standalone-clone)
-  * [homebrew](#homebrew)
   * [global npm or yarn package](#global-npm-or-yarn-package)
 - [Configuration](#configuration)
   * [Package Manager](#package-manager)
@@ -18,6 +17,13 @@ Fix IntelliJ/WebStorm's npm integration under nodenv
 - [How it works](#how-it-works)
 
 <!-- tocstop -->
+
+## Acknowledgment
+
+I am very grateful to Mr. Jason Karns for creating the library for jetbrains.
+And I wanted to use it with yarn, so I created it.
+
+https://github.com/nodenv/jetbrains-npm
 
 ## Pre-requisites
 
@@ -34,13 +40,13 @@ This installation method allows the proxy to find nodenv root automatically;
 the tradeoff being that IntelliJ/WebStorm must be explicitly configured with the proxy's location.
 
 ```sh
-git clone https://github.com/nodenv/jetbrains-npm "$(nodenv root)"/plugins/jetbrains-npm
+git clone https://github.com/nodenv/jetbrains-yarn "$(nodenv root)"/plugins/jetbrains-yarn
 ```
 
 After installation, set the [Package Manager path](#Package-Manager) to the output of:
 
 ```sh
-echo "$(nodenv root)"/plugins/jetbrains-npm
+echo "$(nodenv root)"/plugins/jetbrains-yarn
 ```
 
 ### jetbrains-aware git clone
@@ -51,7 +57,7 @@ the tradeoff requires ensuring the proxy can find your nodenv-root.
 
 ```sh
 mkdir -p "$(nodenv root)/lib/node_modules"
-git clone https://github.com/nodenv/jetbrains-npm "$(nodenv root)"/lib/node_modules/npm
+git clone https://github.com/nodenv/jetbrains-yarn "$(nodenv root)"/lib/node_modules/yarn
 ```
 
 After installation, the IDE should automatically find the proxy and include it in the list of available [package managers](#Package-Manager); just select it! (In fact, if the package manager field is empty before cloning, then a restart of WebStorm should select it automatically.)
@@ -62,51 +68,35 @@ You may also choose to clone the proxy to any location on disk that you like.
 
 ```sh
 # in whatever directory you like:
-git clone https://github.com/nodenv/jetbrains-npm
+git clone https://github.com/nodenv/jetbrains-yarn
 ```
 
 After installation:
 1. set your [Package Manager path](#Package-Manager) as the path to your clone
 2. ensure [`NODENV_ROOT`](#Nodenv-Root) is set in your IDE environment
 
-
-### homebrew
-
-```sh
-brew tap nodenv/nodenv
-brew install jetbrains-npm
-```
-
-After installation, set the [Package Manager path](#Package-Manager) to the output of:
-
-```sh
-brew --prefix jetbrains-npm
-```
-
-And finally, ensure [`NODENV_ROOT`](#Nodenv-Root) is set in your IDE environment.
-
 ### global npm or yarn package
 
 ```sh
-npm -g install @nodenv/jetbrains-npm
+npm -g install @nodenv/jetbrains-yarn
 ```
 
 or
 
 ```sh
-yarn global add @nodenv/jetbrains-npm
+yarn global add @nodenv/jetbrains-yarn
 ```
 
 After installation, set the [Package Manager path](#Package-Manager) to the output of:
 
 ```sh
-echo $(npm -g prefix)/lib/node_modules/@nodenv/jetbrains-npm
+echo $(npm -g prefix)/lib/node_modules/@nodenv/jetbrains-yarn
 ```
 
 or
 
 ```sh
-echo $(yarn global dir)/node_modules/@nodenv/jetbrains-npm
+echo $(yarn global dir)/node_modules/@nodenv/jetbrains-yarn
 ```
 
 And finally, ensure [`NODENV_ROOT`](#Nodenv-Root) is set in your IDE environment.
@@ -154,9 +144,11 @@ This means JetBrains will never find the npm-cli.js or yarn.js scripts, since th
 
 ## How it works
 
-This proxy conforms to the directory structure that JetBrains is hardcoded to find: the npm shim is at `bin/npm-cli.js`.
+This proxy conforms to the directory structure that JetBrains is hardcoded to find: the yarn shim is at `bin/yarn.js`.
 Thus, IntelliJ/WebStorm can be configured to treat this proxy as the "package manager".
 The various installation options either support JetBrains' own lookup mechanisms such that JetBrains can find the proxy automatically, or allow the proxy to find nodenv-root automatically.
 
 When the proxy is invoked, it derives the nodenv-root (either by the proxy's own file location, or by the `nodenv root` command which relies on `NODENV_ROOT` and defaults to `~/.nodenv`).
-Then it proxies the invocation to nodenv's shim (found at `$(nodenv root)/shims/npm`); wherein nodenv can ensure the correct version of node+npm is activated according to `.node-version`, etc.
+Then it proxies the invocation to nodenv's shim (found at `$(nodenv root)/shims/yarn`); wherein nodenv can ensure the correct version of node+npm is activated according to `.node-version`, etc.
+
+## 
