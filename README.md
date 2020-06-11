@@ -78,25 +78,25 @@ After installation:
 ### global npm or yarn package
 
 ```sh
-npm -g install @nodenv/jetbrains-yarn
+npm -g install jetbrains-yarn
 ```
 
 or
 
 ```sh
-yarn global add @nodenv/jetbrains-yarn
+yarn global add jetbrains-yarn
 ```
 
 After installation, set the [Package Manager path](#Package-Manager) to the output of:
 
 ```sh
-echo $(npm -g prefix)/lib/node_modules/@nodenv/jetbrains-yarn
+echo $(npm -g prefix)/lib/node_modules/jetbrains-yarn
 ```
 
 or
 
 ```sh
-echo $(yarn global dir)/node_modules/@nodenv/jetbrains-yarn
+echo $(yarn global dir)/node_modules/jetbrains-yarn
 ```
 
 And finally, ensure [`NODENV_ROOT`](#Nodenv-Root) is set in your IDE environment.
