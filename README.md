@@ -1,4 +1,5 @@
 # jetbrains-yarn proxy
+[![jetbrains-yarn](https://badgen.net/npm/v/jetbrains-yarn)](https://www.npmjs.com/package/jetbrains-yarn)
 
 Fix IntelliJ/WebStorm's yarn integration under nodenv
 
