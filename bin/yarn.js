@@ -5,25 +5,25 @@ var fs = require('fs')
 var path = require('path')
 
 child_process.exec('nodenv root', function(err, stdout, stderr) {
-  var npm
+  var yarn
 
   // get shim path from `nodenv root` (respects $NODENV_ROOT)
   if(!err && stdout) {
-    npm = npmShim(stdout.replace(/\n/g, ''))
+    yarn = yarnShim(stdout.replace(/\n/g, ''))
   }
 
   // infer shim path if installed as nodenv plugin
-  if (!npm && path.basename(path.resolve(__dirname + '/../..')) === 'plugins') {
-    npm = npmShim(path.resolve(__dirname + '/../../..'))
+  if (!yarn && path.basename(path.resolve(__dirname + '/../..')) === 'plugins') {
+    yarn = yarnShim(path.resolve(__dirname + '/../../..'))
   }
 
-  // fallback to npm from PATH if not found thus far
+  // fallback to yarn from PATH if not found thus far
   child_process
-    .spawn(npm || 'npm', process.argv.slice(2), { stdio: 'inherit' })
+    .spawn(yarn || 'yarn', process.argv.slice(2), { stdio: 'inherit' })
     .on('close', process.exit)
 })
 
-function npmShim(nodenvRoot) {
-  var npmShim = nodenvRoot + '/shims/yarn'
-  if (fs.existsSync(npmShim)) return npmShim
+function yarnShim(nodenvRoot) {
+  var yarnShim = nodenvRoot + '/shims/yarn'
+  if (fs.existsSync(yarnShim)) return yarnShim
 }
