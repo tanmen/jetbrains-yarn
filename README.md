@@ -53,7 +53,7 @@ echo "$(nodenv root)"/plugins/jetbrains-yarn
 ### jetbrains-aware git clone
 __(recommended if your nodenv root is the default ~/.nodenv)__
 
-This installation method enables JetBrains to find the npm proxy automatically, as it is relative to the node executable: `../lib/node_modules/npm/bin/npm-cli.js`; (relative to `shims/node`)
+This installation method enables JetBrains to find the npm proxy automatically, as it is relative to the node executable: `../lib/node_modules/npm/bin/npm-cli.js` or `../lib/node_modules/npm/bin/yarn.js`; (relative to `shims/node`)
 the tradeoff requires ensuring the proxy can find your nodenv-root.
 
 ```sh
