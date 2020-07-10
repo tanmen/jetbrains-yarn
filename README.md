@@ -41,7 +41,7 @@ This installation method allows the proxy to find nodenv root automatically;
 the tradeoff being that IntelliJ/WebStorm must be explicitly configured with the proxy's location.
 
 ```sh
-git clone https://github.com/nodenv/jetbrains-yarn "$(nodenv root)"/plugins/jetbrains-yarn
+git clone https://github.com/tanmen/jetbrains-yarn "$(nodenv root)"/plugins/jetbrains-yarn
 ```
 
 After installation, set the [Package Manager path](#Package-Manager) to the output of:
@@ -58,7 +58,7 @@ the tradeoff requires ensuring the proxy can find your nodenv-root.
 
 ```sh
 mkdir -p "$(nodenv root)/lib/node_modules"
-git clone https://github.com/nodenv/jetbrains-yarn "$(nodenv root)"/lib/node_modules/yarn
+git clone https://github.com/tanmen/jetbrains-yarn "$(nodenv root)"/lib/node_modules/yarn
 ```
 
 After installation, the IDE should automatically find the proxy and include it in the list of available [package managers](#Package-Manager); just select it! (In fact, if the package manager field is empty before cloning, then a restart of WebStorm should select it automatically.)
@@ -69,7 +69,7 @@ You may also choose to clone the proxy to any location on disk that you like.
 
 ```sh
 # in whatever directory you like:
-git clone https://github.com/nodenv/jetbrains-yarn
+git clone https://github.com/tanmen/jetbrains-yarn
 ```
 
 After installation:
