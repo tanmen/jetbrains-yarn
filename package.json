@@ -1,6 +1,6 @@
 {
   "name": "jetbrains-yarn",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Fix IntelliJ/WebStorm's yarn integration under nodenv",
   "homepage": "https://github.com/tanmen/jetbrains-yarn",
   "license": "MIT",
